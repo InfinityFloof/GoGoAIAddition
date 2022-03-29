@@ -32,7 +32,6 @@ var neurons = [][]neuron{
 
 // Trains the AI
 func train(x int, w int, y float64, z float64) {
-	multiplier := 2.0
 	firstInput = x
 	secondInput = w
 	for {
@@ -58,16 +57,11 @@ func train(x int, w int, y float64, z float64) {
 			for i := 0; i < len(neurons); i++ {
 				for j := 0; j < len(neurons[i]); j++ {
 					for k := 0; k < len(neurons[i][j].weights); k++ {
-
-						// FIXME: This is a hack to make the training work.
-						fmt.Println("Training: Neuron weights before: ", neurons[i][j].weights[k])
-						neurons[i][j].weights[k] = neurons[i][j].weights[k] * rand.Float64() * multiplier
-						fmt.Println("Training: Neuron weights after: ", neurons[i][j].weights[k])
+						neurons[i][j].weights[k] = rand.Float64()
 					}
 				}
 			}
 		}
-		multiplier += rand.Float64()
 	}
 }
 
