@@ -51,9 +51,10 @@ func train(x int, w int, y float64, z float64) {
 			}
 		}
 		if int(math.Floor(neurons[len(neurons)-1][0].output)) == int(y) || int(math.Floor(neurons[len(neurons)-1][0].output)) == int(z) {
-			fmt.Printf("Correct Guess: %v\n", neurons[len(neurons)-1][0].output)
+			fmt.Printf("(Training) Guess: %v (Correct)\n", neurons[len(neurons)-1][0].output)
 			break
 		} else {
+			//fmt.Printf("(Training) Guess: %v\n", neurons[len(neurons)-1][0].output)
 			for i := 0; i < len(neurons); i++ {
 				for j := 0; j < len(neurons[i]); j++ {
 					for k := 0; k < len(neurons[i][j].weights); k++ {
@@ -115,8 +116,8 @@ func main() {
 	genTrain(500, 80)
 
 	// Initialize AI
-	firstInput = 60
-	secondInput = 34
+	firstInput = 69
+	secondInput = 69
 	for i := 0; i < firstInput; i++ {
 		for m := 0; m < secondInput; m++ {
 			for j := 0; j < len(neurons); j++ {
