@@ -113,6 +113,7 @@ func main() {
 	}
 
 	// Train
+	fmt.Println("(Training) Initializing...")
 	genTrain(500, 100)
 
 	// Initialize AI
