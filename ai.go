@@ -71,11 +71,11 @@ func genTrain(x int, y int) {
 	for i := 0; i < x; i++ {
 		rand.Seed(time.Now().UTC().UnixNano())
 		x := rand.Intn(y)
-		if x != 0 {
+		if x > 1 {
 			first := x
 			rand.Seed(time.Now().UTC().UnixNano())
 			x = rand.Intn(y)
-			if x != 0 {
+			if x > 1 {
 				last := x
 				max := float64(first + last)
 				min := max - 1
@@ -113,11 +113,11 @@ func main() {
 	}
 
 	// Train
-	genTrain(1000, 300)
+	genTrain(500, 100)
 
 	// Initialize AI
-	firstInput = 234
-	secondInput = 308
+	firstInput = 59
+	secondInput = 70
 	fmt.Println("(AI) Initializing...")
 	fmt.Printf("(AI) First input: %v\n", firstInput)
 	fmt.Printf("(AI) Second input: %v\n", secondInput)
