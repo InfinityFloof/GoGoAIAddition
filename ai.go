@@ -70,20 +70,22 @@ func genTrain(x int, y int) {
 	for i := 0; i < x; i++ {
 		rand.Seed(time.Now().UTC().UnixNano())
 		x := rand.Intn(y)
-		if x == 0 {
-			break
+		if x != 0 {
+			first := x
+			rand.Seed(time.Now().UTC().UnixNano())
+			x = rand.Intn(y)
+			if x != 0 {
+				last := x
+				max := float64(first + last)
+				min := max - 1
+				fmt.Printf("Dataset generated (%v): First: %v, Last: %v, Min: %v, Max: %v\n", i, first, last, min, max)
+				train(first, last, max, min)
+			} else {
+				i--
+			}
+		} else {
+			i--
 		}
-		first := x
-		rand.Seed(time.Now().UTC().UnixNano())
-		x = rand.Intn(y)
-		if x == 0 {
-			break
-		}
-		last := x
-		max := float64(first + last)
-		min := max - 1
-		fmt.Printf("Dataset generated: First: %v, Last: %v, Min: %v, Max: %v\n", first, last, min, max)
-		train(first, last, max, min)
 	}
 }
 func main() {
@@ -110,11 +112,11 @@ func main() {
 	}
 
 	// Train
-	genTrain(34, 436)
+	genTrain(500, 80)
 
 	// Initialize AI
-	firstInput = 2
-	secondInput = 5
+	firstInput = 60
+	secondInput = 34
 	for i := 0; i < firstInput; i++ {
 		for m := 0; m < secondInput; m++ {
 			for j := 0; j < len(neurons); j++ {
