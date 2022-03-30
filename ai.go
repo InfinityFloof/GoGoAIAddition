@@ -79,7 +79,7 @@ func genTrain(x int, y int) {
 				last := x
 				max := float64(first + last)
 				min := max - 1
-				fmt.Printf("Dataset generated (%v): First: %v, Last: %v, Min: %v, Max: %v\n", i, first, last, min, max)
+				fmt.Printf("(Training) Dataset generated (%v): First: %v, Last: %v, Min: %v, Max: %v\n", i, first, last, min, max)
 				train(first, last, max, min)
 			} else {
 				i--
@@ -113,11 +113,14 @@ func main() {
 	}
 
 	// Train
-	genTrain(500, 80)
+	genTrain(1000, 300)
 
 	// Initialize AI
-	firstInput = 69
-	secondInput = 69
+	firstInput = 234
+	secondInput = 308
+	fmt.Println("(AI) Initializing...")
+	fmt.Printf("(AI) First input: %v\n", firstInput)
+	fmt.Printf("(AI) Second input: %v\n", secondInput)
 	for i := 0; i < firstInput; i++ {
 		for m := 0; m < secondInput; m++ {
 			for j := 0; j < len(neurons); j++ {
@@ -133,5 +136,5 @@ func main() {
 			}
 		}
 	}
-	fmt.Printf("Final test: %v\n", neurons[len(neurons)-1][0].output)
+	fmt.Printf("(AI) Result: %v\n", neurons[len(neurons)-1][0].output)
 }
